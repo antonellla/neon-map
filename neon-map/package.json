@@ -1,8 +1,8 @@
 {
-  "name": "neon-map-ts",
+  "name": "neon-map",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://antonellla.github.io/neon_map",
+  "homepage": "https://antonellla.github.io/neon-map",
   "dependencies": {
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",

@@ -1,19 +1,78 @@
 import * as React from 'react';
-import Map from 'react-map-gl/maplibre';
-import 'maplibre-gl/dist/maplibre-gl.css';
+import { useState, useMemo } from 'react';
+import { Container, createRoot } from 'react-dom/client';
+import { 
+  Map, 
+  Marker,
+  Popup
+} from 'react-map-gl/maplibre';
 
-function App() {
+import { LocationData } from './LocationData';
+import Pin from './point';
+
+// import 'maplibre-gl/dist/maplibre-gl.css';
+
+import LOCATIONS from './.data/locations.json'
+
+
+export default function App() {
+  const [popupInfo, setPopupInfo] = useState<LocationData | null>(null);
+
+  const pins = useMemo(
+    () =>
+      LOCATIONS.map((location, index) => (
+        <Marker
+          key={`marker-${index}`}
+          longitude={location.longitude}
+          latitude={location.latitude}
+          anchor="bottom"
+          onClick={e => {
+            // If we let the click event propagates to the map, it will immediately close the popup
+            // with `closeOnClick: true`
+            e.originalEvent.stopPropagation();
+            setPopupInfo(location);
+          }}
+        >
+          <Pin />
+        </Marker>
+      )),
+    []
+  );
+
   return (
+  <>
     <Map
       initialViewState={{
-        longitude: -122.4,
-        latitude: 37.8,
-        zoom: 14
+        longitude: -118.1,
+        latitude: 34.0,
+        zoom: 8,
+        bearing: 0,
+        pitch: 0
       }}
-      style={{width: 600, height: 400}}
-      mapStyle="https://api.maptiler.com/maps/streets/style.json?key=hX058Y14KjzadRqj3Nwc"
-    />
+      style={{width: 1000, height: 800}}
+      mapStyle="https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json"
+    >
+
+      {pins}
+
+      {popupInfo && (
+        <Popup
+          anchor="top"
+          longitude={Number(popupInfo.longitude)}
+          latitude={Number(popupInfo.latitude)}
+          onClose={() => setPopupInfo(null)}
+        >
+          <div>
+            {popupInfo.location} |{' '}
+          </div>
+        </Popup>
+      )}
+
+    </Map>
+  </>
   );
 }
 
-export default App;
+export function renderToDom(container: Container) {
+  createRoot(container).render(<App />);
+}
