@@ -1,22 +1,22 @@
 import * as React from 'react';
-import { useState, useMemo } from 'react';
-import { Container, createRoot } from 'react-dom/client';
-import { 
-  Map, 
+import {useState, useMemo} from 'react';
+import {createRoot} from 'react-dom/client';
+import {
+  Map,
   Marker,
-  Popup
+  Popup,
+  NavigationControl,
+  FullscreenControl,
+  ScaleControl,
+  GeolocateControl
 } from 'react-map-gl/maplibre';
 
-import { LocationData } from './LocationData';
-import Pin from './point';
+import Pin from './pin';
 
-// import 'maplibre-gl/dist/maplibre-gl.css';
-
-import LOCATIONS from './.data/locations.json'
-
+import LOCATIONS from '../../.data/locations.json';
 
 export default function App() {
-  const [popupInfo, setPopupInfo] = useState<LocationData | null>(null);
+  const [popupInfo, setPopupInfo] = useState(null);
 
   const pins = useMemo(
     () =>
@@ -40,39 +40,43 @@ export default function App() {
   );
 
   return (
-  <>
-    <Map
-      initialViewState={{
-        longitude: -118.1,
-        latitude: 34.0,
-        zoom: 8,
-        bearing: 0,
-        pitch: 0
-      }}
-      style={{width: 1000, height: 800}}
-      mapStyle="https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json"
-    >
+    <>
+      <Map
+        initialViewState={{
+          latitude: 34.1,
+          longitude: -118.1,
+          zoom: 11,
+          bearing: 0,
+          pitch: 0
+        }}
+        mapStyle="https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json"
+      >
+        <GeolocateControl position="top-left" />
+        <FullscreenControl position="top-left" />
+        <NavigationControl position="top-left" />
+        <ScaleControl />
 
-      {pins}
+        {pins}
 
-      {popupInfo && (
-        <Popup
-          anchor="top"
-          longitude={Number(popupInfo.longitude)}
-          latitude={Number(popupInfo.latitude)}
-          onClose={() => setPopupInfo(null)}
-        >
-          <div>
-            {popupInfo.location} |{' '}
-          </div>
-        </Popup>
-      )}
+        {popupInfo && (
+          <Popup
+            anchor="top"
+            longitude={Number(popupInfo.longitude)}
+            latitude={Number(popupInfo.latitude)}
+            onClose={() => setPopupInfo(null)}
+          >
+            <div>
+              {popupInfo.location} |{' '}
+            </div>
+            <img width="100%" src={popupInfo.image} />
+          </Popup>
+        )}
+      </Map>
 
-    </Map>
-  </>
+    </>
   );
 }
 
-export function renderToDom(container: Container) {
+export function renderToDom(container) {
   createRoot(container).render(<App />);
 }
