@@ -1,5 +1,5 @@
-import {defineConfig} from 'vite';
-import {join} from 'path';
+import { defineConfig } from 'vite';
+import { join } from 'path';
 
 const rootDir = join(__dirname, '..');
 

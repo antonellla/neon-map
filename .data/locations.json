@@ -1,3 +1,25 @@
 [
-    { "location": "Islander Motel", "latitude": 34.14025554294865, "longitude": -118.19657044763426, "image":"todo" }
+    { "location": "Islander Motel", "latitude": 34.14025554294865, "longitude": -118.19657044763426, "image":"todo" },
+    { "location": "Sierra Madre Playhouse", "latitude": 34.162225281813306, "longitude": -118.05461581643254, "image":"todo" },
+    { "location": "Orange Grove Shopping Center", "latitude": 34.160527669634426, "longitude": -118.14035675676787, "image":"todo" },
+    { "location": "Bell & Vaughn Frame & Wheel Aligning", "latitude": 34.15162358859919, "longitude": -118.11364032747326, "image":"todo" },
+    { "location": "Saga Motor Hotel", "latitude": 34.14622151558364, "longitude": -118.11687467133285, "image":"todo" },
+    { "location": "Alex Theatre", "latitude": 34.148829854196855, "longitude": -118.25480085204677, "image":"todo" },
+    { "location": "Museum of Neon Art", "latitude": 34.14380084131486, "longitude": -118.2545117940817, "image":"todo" },
+    { "location": "Safari Inn", "latitude": 34.165893762869025, "longitude": -118.32461491693513, "image":"todo" },
+    { "location": "Bob's Big Boy", "latitude": 34.155521193006784, "longitude": -118.34719261819835, "image":"todo" },
+    { "location": "The Victory Theatre", "latitude": 34.184820986191674, "longitude": -118.34787439091359, "image":"todo" },
+    { "location": "Circus Liquor", "latitude": 34.1726417555343, "longitude": -118.36992682856194, "image":"todo" },
+    { "location": "Valley Relics Museum", "latitude": 34.213989471301595, "longitude": -118.49932447537704, "image":"todo" },
+    { "location": "Gin Ling Way", "latitude": 34.06564328442145, "longitude": -118.2368504042135, "image":"todo" },
+    { "location": "Rialto Theater", "latitude": 34.04337648052679, "longitude": -118.25478672962117, "image":"todo" },
+    { "location": "Pantages Theatre", "latitude": 34.10201169839615, "longitude": -118.32520082398236, "image":"todo" },
+    { "location": "The Egyptian Theatre", "latitude": 34.101240202789505, "longitude": -118.33614303119455, "image":"todo" },
+    { "location": "The Wiltern", "latitude": 34.06167892708092, "longitude": -118.30900539999999, "image":"todo" },
+    { "location": "Park Wilshire", "latitude": 34.060814557011085, "longitude": -118.28069371349795, "image":"todo" },
+    { "location": "Hotel Californian sign", "latitude": 34.058796781270274, "longitude": -118.2720254187939, "image":"todo" },
+    { "location": "The Mayan", "latitude": 34.04073637757803, "longitude": -118.25873079864724, "image":"todo" },
+    { "location": "Palace Theatre", "latitude": 34.04609691597624, "longitude": -118.25262930480093, "image":"todo" },
+    { "location": "Los Angeles Theatre", "latitude": 34.0465773191884, "longitude": -118.25255004341709, "image":"todo" },
+    { "location": "Grand Central Market", "latitude": 34.05110569408592, "longitude": -118.24836039145872, "image":"todo" }
 ]
