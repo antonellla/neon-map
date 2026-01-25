@@ -6,15 +6,19 @@ const PaneTheme = createTheme({
     
     h2: {
         fontSize: '32pt',
+        color: '#474747'
     },
 
     h3: {
         fontSize: '16pt',
+        fontStyle: 'italic',
+        color: '#666666'
     },
 
     body1: {
         fontSize: '12pt',
         fontStyle: 'italic',
+        color: '#333333'
     }
     
 },
