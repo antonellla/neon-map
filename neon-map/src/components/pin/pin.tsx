@@ -7,7 +7,8 @@ const ICON = `M20.2,15.7L20.2,15.7c1.1-1.6,1.8-3.6,1.8-5.7c0-5.6-4.5-10-10-10S2,
 const pinStyle = {
   cursor: 'pointer',
   fill: '#822DE3',
-  stroke: 'none'
+  stroke: '1',
+  color: '#000000'
 };
 
 function Pin({size = 20}) {
