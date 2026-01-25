@@ -1,18 +1,18 @@
 # Mapping LA Neon 
 
-https://cloud.maptiler.com/maps/
+A project to map and photograph authentic neon around the city of Los Angeles.
 
 ## Usage
 
-From `neon-map`:
+### Run local development server:
 
 ```bash
+cd neon-map
 npm install
 npm run start
 ```
 
-
-## Deploy to gh-pages 
+### Deploy to gh-pages 
 
 ```bash
 npm run build   # build using vite 
