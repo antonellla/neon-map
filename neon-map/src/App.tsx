@@ -1,7 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { createRoot } from 'react-dom/client';
-import SlidingPane from "react-sliding-pane";
-import "react-sliding-pane/dist/react-sliding-pane.css";
+import { Drawer, Box, Button, Typography } from "@mui/material";
 import {
   Map,
   Marker,
@@ -15,14 +14,18 @@ import Pin from './components/pin/pin';
 
 import LOCATIONS from '../../.data/locations.json';
 
-export default function App() {
-  const [popupInfo, setPopupInfo] = useState(null);
+interface LocationDetail {
+  name: string;
+  location: string;
+  address_1: string;
+  address_2: string;
+  images: string[];
+}
 
-  const [state, setState] = useState({
-    isPaneOpen: false,
-    locationName: null,
-    location: null,
-  });
+const App: React.FC = () => {
+  
+  // Popup state 
+  const [popupInfo, setPopupInfo] = useState(null);
 
   const pins = useMemo( () =>
     LOCATIONS.map((location, index) => (
@@ -30,15 +33,29 @@ export default function App() {
               longitude={location.longitude}
               latitude={location.latitude}
               anchor="bottom"
-              onClick={event => {
+              onClick={(event: { originalEvent: { stopPropagation: () => void; }; }) => {
                 event.originalEvent.stopPropagation();
                 setPopupInfo(location);
               }}>
         <Pin />
       </Marker>
     )),
-  []
+    []
   );
+
+  // Drawer state 
+  const [open, setOpen] = useState(false);
+  const [selectedLocation, setSelectedLocation] = useState<LocationDetail | null>(null);
+
+  const openDrawer = (location: LocationDetail) => {
+    setSelectedLocation(location);
+    setOpen(true);
+  };
+
+  const closeDrawer = () => {
+    setOpen(false);
+    setSelectedLocation(null);
+  };
 
   return (
     <>
@@ -64,42 +81,52 @@ export default function App() {
                  latitude={Number(popupInfo.latitude)}
                  onClose={() => setPopupInfo(null)}>
             <div>
-              <span class="popup-title">{popupInfo.name}</span><br />
-              <span class="popup-location">{popupInfo.location}</span>
+              <span className="popup-title">{popupInfo.name}</span><br />
+              <span className="popup-location">{popupInfo.location}</span>
             </div>
             <img width="100%" src={popupInfo.thumb} />
 
-            <a href="#" onClick={() => 
-              setState({ 
-                isPaneOpen: true,
-                locationName: popupInfo.name,
-                location: popupInfo.location
-              })}>
+            <Button onClick={() =>
+              openDrawer({ 
+                name: popupInfo.name, 
+                location: popupInfo.location, 
+                address_1: popupInfo.address_1,
+                address_2: popupInfo.address_2,
+                images: popupInfo.images
+                })}>
               see more
-            </a>
+            </Button>
           </Popup>
         )}
 
       </Map>
-      
-      <SlidingPane className="detail-pane"
-                   overlayClassName="detail-overlay"
-                   isOpen={state.isPaneOpen}
-                   title={state.locationName}
-                   subtitle={state.location}
-                   closeIcon="x"
-                   onRequestClose={() => {
-                    setState({ isPaneOpen: false });
-                   }} 
-                   children={undefined}>
-        <div></div>
 
-      </SlidingPane>
+      <Drawer anchor="right" open={open} onClose={closeDrawer}>
+        <Box sx={{ width: 600, p: 2 }}>
+          {selectedLocation ? (
+            <>
+              <Typography variant="h5">{ selectedLocation.name }</Typography>
+              <Typography variant="h6">{ selectedLocation.location }</Typography>
+
+              {selectedLocation.images.map((_, index) => (
+                <img width="100%" src={ selectedLocation.images[index] } />
+              ))}
+              
+              <Typography variant="body1">{ selectedLocation.address_1 }</Typography>
+              <Typography variant="body1">{ selectedLocation.address_2 }</Typography>
+            </>
+          ) : (
+            <Typography>No location selected.</Typography>
+          )}
+        </Box>
+      </Drawer>
 
     </>
   );
 }
 
-export function renderToDom(container) {
+export default App;
+
+export function renderToDom(container: any) {
   createRoot(container).render(<App />);
 }
