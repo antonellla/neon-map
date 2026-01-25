@@ -1,4 +1,4 @@
-# Mapping LA Neon 
+# Mapping Los Angeles Neon 
 
 A project to map and photograph authentic neon around the city of Los Angeles.
 
@@ -12,7 +12,7 @@ npm install
 npm run start
 ```
 
-### Deploy to gh-pages 
+### Deploy to gh-pages:
 
 ```bash
 npm run build   # build using vite 
