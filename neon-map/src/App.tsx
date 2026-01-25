@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Drawer, Box, Button, Typography } from "@mui/material";
+import { ThemeProvider } from '@mui/material/styles';
 import {
   Map,
   Marker,
@@ -11,6 +12,7 @@ import {
 } from 'react-map-gl/maplibre';
 
 import Pin from './components/pin/pin';
+import PaneTheme from './theme'
 
 import LOCATIONS from '../../.data/locations.json';
 
@@ -23,7 +25,7 @@ interface LocationDetail {
 }
 
 const App: React.FC = () => {
-  
+
   // Popup state 
   const [popupInfo, setPopupInfo] = useState(null);
 
@@ -86,7 +88,9 @@ const App: React.FC = () => {
             </div>
             <img width="100%" src={popupInfo.thumb} />
 
-            <Button onClick={() =>
+            <Button 
+              sx={{ color: '#7833db', p: 2 }}
+              onClick={() =>
               openDrawer({ 
                 name: popupInfo.name, 
                 location: popupInfo.location, 
@@ -101,25 +105,29 @@ const App: React.FC = () => {
 
       </Map>
 
-      <Drawer anchor="right" open={open} onClose={closeDrawer}>
-        <Box sx={{ width: 600, p: 2 }}>
-          {selectedLocation ? (
-            <>
-              <Typography variant="h5">{ selectedLocation.name }</Typography>
-              <Typography variant="h6">{ selectedLocation.location }</Typography>
-
-              {selectedLocation.images.map((_, index) => (
-                <img width="100%" src={ selectedLocation.images[index] } />
-              ))}
-              
-              <Typography variant="body1">{ selectedLocation.address_1 }</Typography>
-              <Typography variant="body1">{ selectedLocation.address_2 }</Typography>
-            </>
-          ) : (
-            <Typography>No location selected.</Typography>
-          )}
-        </Box>
-      </Drawer>
+        <Drawer anchor="right" 
+                open={open} 
+                onClose={closeDrawer}>
+          <Box sx={{ width: 600, p: 2 }}>
+            {selectedLocation ? (
+              <>
+                <ThemeProvider theme={PaneTheme}>
+                  <Typography variant="h2">{ selectedLocation.name }</Typography>
+                  <Typography variant="h3">{ selectedLocation.location }</Typography>
+                  
+                  {selectedLocation.images.map((_, index) => (
+                    <img width="100%" src={ selectedLocation.images[index] } />
+                  ))}
+                  
+                  <Typography variant="body1">{ selectedLocation.address_1 }</Typography>
+                  <Typography variant="body1">{ selectedLocation.address_2 }</Typography>
+                </ThemeProvider>
+              </>
+            ) : (
+              <Typography>No location selected.</Typography>
+            )}
+          </Box>
+        </Drawer>
 
     </>
   );
