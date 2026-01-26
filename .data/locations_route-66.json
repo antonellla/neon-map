@@ -1,0 +1,6 @@
+[
+    { "name": "Roy's Motel & Cafe", "location": "Amboy, California", "latitude": 34.58075023545766, "longitude": -115.74835603817061, "address": "87520 National Trails Hwy", "city": "Amboy", "state": "CA", "zip": "92304", "thumb":"", "images": [""] },
+    { "name": "Wigwam Motel", "location": "Holbrook, Arizona", "latitude": 34.58075023545766, "longitude": -115.74835603817061, "address": "811 W Hopi Dr", "city": "Holbrook", "state": "AZ", "zip": "86025", "thumb":"", "images": [""] },
+    { "name": "Dog House Drive In", "location": "Albuquerque, New Mexico", "latitude": 35.08790523129657, "longitude": -106.66095983039673, "address": "1216 Central Ave NW", "city": "Albuquerque", "state": "NM", "zip": "87102", "thumb":"", "images": [""] },
+    { "name": "Blue Swallow Motel", "location": "Tucumcari, New Mexico", "latitude": 35.17242649278751, "longitude": -103.71636470105486, "address": "815 E Route 66 Blvd", "city": "Tucumcari", "state": "NM", "zip": "88401", "thumb":"", "images": [""] }
+]
