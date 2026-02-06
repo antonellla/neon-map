@@ -1,7 +1,14 @@
 import React, { useState, useMemo } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Drawer, Box, Button, Typography } from "@mui/material";
-import { ThemeProvider } from '@mui/material/styles';
+import { Routes, Route } from 'react-router';
+import { 
+  Box, 
+  Button, 
+  Drawer, 
+  Modal,
+  ThemeProvider,
+  Typography 
+} from "@mui/material";
 import {
   Map,
   Marker,
@@ -14,13 +21,15 @@ import {
 import Pin from './components/pin/pin';
 import PaneTheme from './theme'
 
-import LOCATIONS from '../../.data/locations.json';
+import LOCATIONS from '../../.data/locations_los-angeles.json';
 
 interface LocationDetail {
   name: string;
   location: string;
-  address_1: string;
-  address_2: string;
+  address: string;
+  city: string;
+  state: string;
+  zip: string
   images: string[];
 }
 
@@ -34,7 +43,6 @@ const App: React.FC = () => {
       <Marker key={`marker-${index}`}
               longitude={location.longitude}
               latitude={location.latitude}
-              anchor="bottom"
               onClick={(event: { originalEvent: { stopPropagation: () => void; }; }) => {
                 event.originalEvent.stopPropagation();
                 setPopupInfo(location);
@@ -94,8 +102,10 @@ const App: React.FC = () => {
               openDrawer({ 
                 name: popupInfo.name, 
                 location: popupInfo.location, 
-                address_1: popupInfo.address_1,
-                address_2: popupInfo.address_2,
+                address: popupInfo.address,
+                city: popupInfo.city,
+                state: popupInfo.state,
+                zip: popupInfo.zip,
                 images: popupInfo.images
                 })}>
               see more
@@ -119,8 +129,8 @@ const App: React.FC = () => {
                     <img width="100%" src={ selectedLocation.images[index] } />
                   ))}
                   
-                  <Typography variant="body1">{ selectedLocation.address_1 }</Typography>
-                  <Typography variant="body1">{ selectedLocation.address_2 }</Typography>
+                  <Typography variant="body1">{ selectedLocation.address }</Typography>
+                  <Typography variant="body1">{ selectedLocation.city + ', ' + selectedLocation.state + ' ' + selectedLocation.zip }</Typography>
                 </ThemeProvider>
               </>
             ) : (
