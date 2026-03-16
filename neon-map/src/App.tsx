@@ -47,7 +47,9 @@ const App: React.FC = () => {
                 event.originalEvent.stopPropagation();
                 setPopupInfo(location);
               }}>
-        <Pin />
+        <Pin illuminated={location.illuminated}
+             thumb={location.thumb}
+        />
       </Marker>
     )),
     []
