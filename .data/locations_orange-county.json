@@ -1,0 +1,4 @@
+[
+    { "name": "Dana Point Nursery",  "location": "Dana Point", "latitude": 33.466026736794745, "longitude": -117.70516442536969, "address": "34100 Pacific Coast Hwy", "city": "Dana Point", "state": "CA", "zip": "92629", "thumb": "", "images": [""], "url": "" },
+    { "name": "South Coast Theatre",  "location": "Dana Point", "latitude": 33.5425159180771, "longitude": -117.78468385747891, "address": "162 S Coast Hwy", "city": "Laguna Beach", "state": "CA", "zip": "92651", "thumb": "", "images": [""], "url": "" }
+]
