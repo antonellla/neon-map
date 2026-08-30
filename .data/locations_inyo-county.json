@@ -1,0 +1,5 @@
+[
+    { "name": "Thunderbird Motel",  "location": "Bishop", "latitude": 37.36376771931756, "longitude": -118.39601779979002, "address": "190 W Pine St", "city": "Bishop", "state": "CA", "zip": "93514", "illuminated": true, "thumb": "", "images": [""], "url": "" },
+    { "name": "Mac's Sporting Goods",  "location": "Bishop", "latitude": 37.36405113560087, "longitude": -118.39542534201053, "address": "425 N Main St", "city": "Bishop", "state": "CA", "zip": "93514", "illuminated": true, "thumb": "", "images": [""], "url": "" },
+    { "name": "Authorized Cessna Service sign",  "location": "Lone Pine", "latitude": 36.59074508757297, "longitude": -118.05733455594977, "address": "1460 S Main St", "city": "Lone Pine", "state": "CA", "zip": "93545", "thumb": "", "images": [""], "url": "" }
+]
